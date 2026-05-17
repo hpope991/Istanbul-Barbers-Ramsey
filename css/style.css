@@ -237,6 +237,17 @@ h2 {
   font-style: italic;
 }
 
+/* PRICING — full-bleed texture strip */
+.pricing-section {
+  width: 100%;
+  background: url('../Photos/texture2.jpg') center/cover no-repeat;
+  padding: 6rem 2rem;
+}
+.pricing-section .price-list {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
 /* SECTION TITLES — center align eyebrow + h2 stacks */
 .services-section, .pricing-section, .gallery-section { text-align: center; }
 .services-section .services, .pricing-section .price-list, .gallery-section .gallery-featured { text-align: left; }
@@ -341,9 +352,7 @@ h2 {
   list-style: none;
   max-width: 600px;
   margin: 3rem auto 0;
-  background: var(--panel);
-  padding: 2.5rem 3rem;
-  border: 1px solid #2a2a2a;
+  padding: 2.5rem 0;
 }
 .price-list li {
   display: flex;
