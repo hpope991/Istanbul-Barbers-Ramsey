@@ -82,7 +82,7 @@ nav a {
   transition: color 0.2s;
 }
 
-/* Animated gold underline */
+/* Animated gold underline — hover only */
 nav a::after {
   content: '';
   position: absolute;
@@ -94,12 +94,8 @@ nav a::after {
   transition: width 0.25s ease;
 }
 
-nav a:hover::after,
-nav a.active::after {
-  width: 100%;
-}
-
-nav a:hover, nav a.active { color: var(--accent); }
+nav a:hover { color: var(--accent); }
+nav a:hover::after { width: 100%; }
 
 .hero {
   min-height: 92vh;
