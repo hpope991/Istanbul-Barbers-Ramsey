@@ -566,10 +566,96 @@ footer {
   padding-top: 1.5rem;
 }
 
+/* ─────────────────────────────────────────
+   HAMBURGER / MOBILE NAV
+   ───────────────────────────────────────── */
+
+/* The burger button — hidden on desktop */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  background: transparent;
+  border: 1px solid rgba(201, 169, 97, 0.4);
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.2s;
+  flex-shrink: 0;
+}
+.nav-toggle:hover { border-color: var(--accent); }
+
+/* Three bars */
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+  transform-origin: center;
+}
+
+/* Animate bars into an × when open */
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 800px) {
+  /* Show the burger */
+  .nav-toggle { display: flex; }
+
+  /* Hide the phone link on mobile (already hidden above, keep consistent) */
+  .header-phone { display: none !important; }
+
+  /* The <nav> itself becomes a full-width dropdown panel */
+  nav {
+    /* Take full width below the logo/burger row */
+    width: 100%;
+    order: 3; /* pushes nav below logo + burger */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    /* Hidden by default */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0 0;
+
+    /* Subtle separator */
+    border-top: 1px solid transparent;
+  }
+
+  /* When open */
+  nav.open {
+    max-height: 400px;
+    padding: 0.6rem 0 0.8rem;
+    border-top-color: rgba(201, 169, 97, 0.2);
+  }
+
+  /* Each link becomes its own full-width row */
+  nav a {
+    margin-left: 0;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    text-align: left;
+  }
+  nav a:last-child { border-bottom: none; }
+
+  /* Underline animation stays but goes full-width */
+  nav a::after { display: none; }
+}
+
 /* MOBILE */
 @media (max-width: 800px) {
   .hero { padding: 3rem 1.5rem; min-height: 80vh; }
-  .header-phone { display: none; }
   main { padding: 4rem 1.5rem; }
   .gallery-featured { grid-template-columns: 1fr; }
   .price-list { padding: 1.5rem; }
